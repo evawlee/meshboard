@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meshboard"
+version = "0.4.2"
+description = "Network fabric management dashboard"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=2.3,<4",
+    "werkzeug>=2.3,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-json-report>=1.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["meshboard*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "__eval_*_sec.py"]
+python_classes = ["Test*"]
